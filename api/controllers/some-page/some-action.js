@@ -17,13 +17,17 @@ module.exports = {
 
 
   exits: {
-
+    someError: {
+      description: 'Handles some error happens in controller',
+      message: 'Some error handled in controller',
+    }
   },
 
 
   fn: async function (inputs, exits) {
 
-    const someProcesses = await sails.helpers.someHelper();
+    const someProcesses = await sails.helpers.someHelper(inputs.requiredParam)
+      .intercept('someError', exits.someError);
 
     return exits.success(someProcesses);
 

@@ -8,19 +8,26 @@ module.exports = {
 
 
   inputs: {
-
+    requiredParam: {
+      example: 'some_value',
+      required: true,
+      type: 'string',
+    }
   },
 
 
   exits: {
-
+    someError: {
+      description: 'Just some error happens in workflow',
+      message: 'Some error happens!',
+    }
   },
 
 
   fn: async function (inputs, exits) {
 
     // All done.
-    return exits.success('someProcessedValue');
+    return inputs.requiredParam === 'isError' ? exits.someError() : exits.success('someProcessedValue');
 
   }
 
