@@ -26,10 +26,13 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    const someProcesses = await sails.helpers.someHelper(inputs.requiredParam)
-      .intercept('someError', exits.someError);
+    const someProcesses = await sails.helpers.someHelper(inputs.requiredParam);
 
-    return exits.success(someProcesses);
+    if (someProcesses === 'someError') {
+      exits.someError(someProcesses);
+    } else {
+      exits.success(someProcesses);
+    }
 
   }
 

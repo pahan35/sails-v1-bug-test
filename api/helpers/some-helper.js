@@ -27,7 +27,7 @@ module.exports = {
   fn: async function (inputs, exits) {
 
     // All done.
-    return inputs.requiredParam === 'isError' ? exits.someError() : exits.success('someProcessedValue');
+    return inputs.requiredParam === 'isError' ? exits.success('someError') : exits.success('someProcessedValue');
 
   }
 
