@@ -1,12 +1,14 @@
 module.exports = {
 
 
+  // change 1
   friendlyName: 'Update profile',
 
 
   description: 'Update the profile for the logged-in user.',
 
 
+  // change 2
   inputs: {
 
     fullName: {
@@ -20,6 +22,7 @@ module.exports = {
   },
 
 
+  // change 3
   exits: {
 
     emailAlreadyInUse: {
@@ -32,6 +35,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
+    // change 4
     var newEmailAddress = inputs.emailAddress;
     if (newEmailAddress !== undefined) {
       newEmailAddress = newEmailAddress.toLowerCase();
@@ -58,6 +62,7 @@ module.exports = {
     }
 
 
+    // change 5
     // If the email address is changing, make sure it is not already being used.
     if (_.contains(['beginChange', 'changeImmediately', 'modifyPendingChange'], desiredEffectReEmail)) {
       let conflictingUser = await User.findOne({
